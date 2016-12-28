@@ -28,4 +28,11 @@ public class PhoneNumber {
 			}
 		}
 	}
+
+	@Override
+	public String toString() {
+		return String.format("%s-%s-%s", countryCode, stateCode, number);
+	}
+	
+	
 }
