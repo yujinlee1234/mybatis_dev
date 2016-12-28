@@ -7,7 +7,7 @@
 	</settings>
 	<typeAliases>
 		<!--  <typeAlias type="kr.or.dgit.bigdata.school.dto.Student" alias="Student"/> -->
-		<package name="kr.or.dgit.bigdata.school.dto"/>
+		<package name="kr.or.dgit.bigdata.mybatis_dev.dto"/>
 	</typeAliases>
 	<typeHandlers>
 		<package name="kr.or.dgit.bigdata.school.typehandler"/>
@@ -24,7 +24,7 @@
 		</environment>
 	</environments>
 	<mappers>
-		<mapper resource="kr/or/dgit/bigdata/school/mappers/StudentMapper.xml" />
+		<!-- <mapper resource="kr/or/dgit/bigdata/mybatis_dev/mappers/StudentMapper.xml" /> -->
 		<!-- <package name="kr.or.dgit.bigdata.school.mappers"/> -->
 	</mappers>
 </configuration>
