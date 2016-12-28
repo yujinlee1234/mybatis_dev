@@ -34,5 +34,20 @@ public class StudentService {
 			sqlSession.close();
 		}
 	}	
+	public int insertStudent(Student student){
+		if (logger.isDebugEnabled()) {
+			logger.debug("insertStudent(student) - start");
+		}
+
+		SqlSession sqlSession = MyBatisSqlSessionFactory.openSession();
+		try{
+			StudentMapper studentMapper = sqlSession.getMapper(StudentMapper.class);
+			int res = studentMapper.insertStudent(student);
+			sqlSession.commit();
+			return res;
+		}finally{
+			sqlSession.close();
+		}
+	}
 	
 }
