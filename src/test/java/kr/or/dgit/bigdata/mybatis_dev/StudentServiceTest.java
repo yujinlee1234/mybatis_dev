@@ -4,6 +4,8 @@ import static org.junit.Assert.*;
 
 import java.util.Calendar;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 
 import org.junit.AfterClass;
 import org.junit.Assert;
@@ -82,12 +84,33 @@ public class StudentServiceTest {
 		int student = studentService.updateStudent(insStd);
 		Assert.assertEquals(1, student);
 	}
-	*/
+	*//*
 	@Test
 	public void testDeleteStudent() {
 		Student insStd = studentService.findStudentById(6);
 		
 		int student = studentService.deleteStudent(insStd.getStudId());
 		Assert.assertEquals(1, student);
+	}
+	*/
+	@Test
+	public void testfindStudentByIdForMap() {
+		Map<String, Object> stdmap = studentService.findStudentByIdForMap(1);
+		Assert.assertNotNull(stdmap);
+		
+		for(Entry<String, Object> e : stdmap.entrySet()){
+			System.out.printf("%s -> %s %n",e.getKey(), e.getValue());
+		}
+	}
+	@Test
+	public void testfindAllStudentForMap(){
+		List<Map<String, Object>> stdmaplist = studentService.findAllStudentForMap();
+		Assert.assertNotNull(stdmaplist);
+		
+		for(Map<String, Object> m : stdmaplist){
+			for(Entry<String, Object> e : m.entrySet()){
+				System.out.printf("%s -> %s %n",e.getKey(), e.getValue());
+			}
+		}
 	}
 }

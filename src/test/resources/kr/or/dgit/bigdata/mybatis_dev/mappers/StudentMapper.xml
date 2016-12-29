@@ -2,6 +2,21 @@
 <!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="kr.or.dgit.bigdata.mybatis_dev.mappers.StudentMapper">
+	<resultMap type="Student" id="StudentResult">
+		<id property="studId" column="stud_id"/>
+		<result property="name" column="name"/>
+		<result property="email" column="email"/>
+		<result property="phone" column="phone"/>
+		<result property="dob" column="dob"/>
+	</resultMap>
+	<resultMap type="Student" id="StudentWithAddressResult" extends="StudentResult">
+		<result property="address.addrId" column="addr_id"/>
+		<result property="address.street" column="street"/>
+		<result property="address.city" column="city"/>
+		<result property="address.state" column="state"/>
+		<result property="address.zip" column="zip"/>
+		<result property="address.country" column="country"/>
+	</resultMap>
 	<select id="findStudentById" parameterType="int" resultType="Student">
 		 select stud_id, name, email, dob from students where stud_id=#{studId};
 	</select>
@@ -19,6 +34,12 @@
 		delete from students where stud_id=#{studId};
 	</delete>
 	<select id="findAllStudent" resultType="Student">
+		select stud_id, name, email, dob from students;
+	</select>
+	<select id="findStudentByIdForMap" parameterType="int" resultType="map">
+		select stud_id, name, email, dob from students where stud_id=#{studId};
+	</select>
+	<select id="findAllStudentForMap" resultType="map">
 		select stud_id, name, email, dob from students;
 	</select>
 </mapper>
