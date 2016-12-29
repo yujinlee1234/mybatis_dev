@@ -113,4 +113,12 @@ public class StudentServiceTest {
 			}
 		}
 	}
+	
+	// join
+	
+	@Test
+	public void testselectStudentWithAddress() {
+		Student student = studentService.selectStudentWithAddress(1);
+		Assert.assertNotNull(student);
+	}
 }

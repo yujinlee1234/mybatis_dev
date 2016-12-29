@@ -42,4 +42,23 @@
 	<select id="findAllStudentForMap" resultType="map">
 		select stud_id, name, email, dob from students;
 	</select>
+	
+	<resultMap id="StdWithAddrRes" type="Student">
+		<id property="studId" column="stud_id" />
+		<result property="name" column="name" />
+		<result property="email" column="email" />
+		<result property="phone" column="phone" />
+		<result property="dob" column="dob" />
+		<result property="address.addrId" column="addr_id" />
+		<result property="address.street" column="street" />
+		<result property="address.city" column="city" />
+		<result property="address.state" column="state" />
+		<result property="address.zip" column="zip" />
+		<result property="address.country" column="country" />
+	</resultMap>
+	
+	<select id="selectStudentWithAddress" parameterType="int" resultMap="StdWithAddrRes">
+		 select stud_id, name, email, phone, a.addr_id, street, city, state, zip, country 
+		 from students s inner join addresses a on s.addr_id=a.addr_id where stud_id = #{stud_id}
+	</select>
 </mapper>

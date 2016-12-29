@@ -214,3 +214,6 @@ INSERT INTO COURSE_ENROLLMENT (COURSE_ID,STUD_ID) VALUES
  update students set name='박경아3', phone = '010-2222-3333', dob='1992-08-07' where stud_id=6; 
  delete from students where stud_id=7;
  
+ 
+ select stud_id, name, email, phone, a.addr_id, street, city, state, zip, country
+ from students s inner join addresses a on s.addr_id=a.addr_id where stud_id = 1;
