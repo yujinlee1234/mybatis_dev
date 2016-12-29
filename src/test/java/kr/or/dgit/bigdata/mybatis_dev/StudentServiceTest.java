@@ -3,6 +3,7 @@ package kr.or.dgit.bigdata.mybatis_dev;
 import static org.junit.Assert.*;
 
 import java.util.Calendar;
+import java.util.List;
 
 import org.junit.AfterClass;
 import org.junit.Assert;
@@ -31,6 +32,12 @@ public class StudentServiceTest {
 		Assert.assertNotNull(student);
 	}
 	@Test
+	public void testfindAllStudent() {
+		List<Student> student = studentService.findAllStudent();
+		Assert.assertNotNull(student);
+	}
+	/*
+	@Test
 	public void testInsertStudent() {
 		Calendar cal = Calendar.getInstance();
 		cal.clear();
@@ -43,6 +50,44 @@ public class StudentServiceTest {
 		insStd.setDob(cal.getTime());
 		
 		int student = studentService.insertStudent(insStd);
+		Assert.assertEquals(1, student);
+	}
+	
+	@Test
+	public void testInsertStudentAutoInc() {
+		Calendar cal = Calendar.getInstance();
+		cal.clear();
+		cal.set(1980, 0, 1);
+		Student insStd = new Student();
+		insStd.setName("박경아2");
+		insStd.setEmail("pka@test.co.kr");
+		insStd.setPhone(new PhoneNumber("010-1111-2222"));
+		insStd.setDob(cal.getTime());
+		
+		int student = studentService.insertStudentAutoInc(insStd);
+		Assert.assertEquals(1, student);
+	}
+	
+	@Test
+	public void testUpdateStudent() {
+		Calendar cal = Calendar.getInstance();
+		cal.clear();
+		cal.set(1999,7,07);
+		Student insStd = studentService.findStudentById(7);
+		insStd.setName("박경아5");
+		insStd.setEmail("pka@test.co.kr");
+		insStd.setPhone(new PhoneNumber("010-2222-3333"));
+		insStd.setDob(cal.getTime());
+		
+		int student = studentService.updateStudent(insStd);
+		Assert.assertEquals(1, student);
+	}
+	*/
+	@Test
+	public void testDeleteStudent() {
+		Student insStd = studentService.findStudentById(6);
+		
+		int student = studentService.deleteStudent(insStd.getStudId());
 		Assert.assertEquals(1, student);
 	}
 }

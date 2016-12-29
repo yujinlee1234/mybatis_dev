@@ -1,5 +1,7 @@
 package kr.or.dgit.bigdata.mybatis_dev.service;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.apache.log4j.Logger;
 
@@ -20,7 +22,7 @@ public class StudentService {
 	}
 
 	private StudentService() {}
-	
+	 
 	public Student findStudentById(int studId){
 		if (logger.isDebugEnabled()) {
 			logger.debug("findStudentById(int) - start");
@@ -50,4 +52,63 @@ public class StudentService {
 		}
 	}
 	
+	public int insertStudentAutoInc(Student student){
+		if (logger.isDebugEnabled()) {
+			logger.debug("insertStudent(student) - start");
+		}
+
+		SqlSession sqlSession = MyBatisSqlSessionFactory.openSession();
+		try{
+			StudentMapper studentMapper = sqlSession.getMapper(StudentMapper.class);
+			int res = studentMapper.insertStudentAutoInc(student);
+			sqlSession.commit();
+			return res;
+		}finally{
+			sqlSession.close();
+		}
+	}
+	
+	public int updateStudent(Student student){
+			if (logger.isDebugEnabled()) {
+				logger.debug("updateStudent(student) - start");
+			}
+
+			SqlSession sqlSession = MyBatisSqlSessionFactory.openSession();
+			try{
+				StudentMapper studentMapper = sqlSession.getMapper(StudentMapper.class);
+				int res = studentMapper.updateStudent(student);
+				sqlSession.commit();
+				return res;
+			}finally{
+				sqlSession.close();
+			}
+	}
+	public int deleteStudent(int idx){
+		if (logger.isDebugEnabled()) {
+			logger.debug("deleteStudent(idx) - start");
+		}
+
+		SqlSession sqlSession = MyBatisSqlSessionFactory.openSession();
+		try{
+			StudentMapper studentMapper = sqlSession.getMapper(StudentMapper.class);
+			int res = studentMapper.deleteStudent(idx);
+			sqlSession.commit();
+			return res;
+		}finally{
+			sqlSession.close();
+		}
+	}
+	public List<Student> findAllStudent(){
+		if (logger.isDebugEnabled()) {
+			logger.debug("findAllStudent() - start");
+		}
+
+		SqlSession sqlSession = MyBatisSqlSessionFactory.openSession();
+		try{
+			StudentMapper studentMapper = sqlSession.getMapper(StudentMapper.class);
+			return studentMapper.findAllStudent();
+		}finally{
+			sqlSession.close();
+		}
+	}
 }

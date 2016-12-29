@@ -206,3 +206,11 @@ INSERT INTO COURSE_ENROLLMENT (COURSE_ID,STUD_ID) VALUES
  select stud_id, name, email, dob from students where stud_id=1;
  
  insert into students(stud_id,name, email, phone, dob) values (3,'강보미', 'kbm@test.co.kr','010-1111-1111', '2016-12-12');
+ insert into students(name, email, phone, dob) values ('강보미2', 'kbm@test.co.kr','010-1111-1111', '2016-12-12');
+ 
+ -- 외래키 제약 없앰 = 0; 생성 = 1;
+ set foreign_key_checks=1; 
+ 
+ update students set name='박경아3', phone = '010-2222-3333', dob='1992-08-07' where stud_id=6; 
+ delete from students where stud_id=7;
+ 
