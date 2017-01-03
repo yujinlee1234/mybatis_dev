@@ -19,6 +19,7 @@ public interface StudentMapper {
 	
 	/// join
 	
-	Student selectStudentWithAddress(int id);
+	Student selectStudentWithAddress(int id);		//1회만 사용할 경우
+	Student selectStudentWithAddressResult(int id);//추천
 	
 }

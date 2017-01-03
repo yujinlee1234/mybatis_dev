@@ -27,7 +27,7 @@ public class StudentServiceTest {
 	public static void tearDownAfterClass() throws Exception {
 		studentService = null;
 	}
-
+/*
 	@Test
 	public void testfindStudentById() {
 		Student student = studentService.findStudentById(1);
@@ -37,7 +37,7 @@ public class StudentServiceTest {
 	public void testfindAllStudent() {
 		List<Student> student = studentService.findAllStudent();
 		Assert.assertNotNull(student);
-	}
+	}*/
 	/*
 	@Test
 	public void testInsertStudent() {
@@ -119,6 +119,11 @@ public class StudentServiceTest {
 	@Test
 	public void testselectStudentWithAddress() {
 		Student student = studentService.selectStudentWithAddress(1);
+		Assert.assertNotNull(student);
+	}
+	@Test
+	public void testselectStudentWithAddressResult(){
+		Student student = studentService.selectStudentWithAddressResult(1);
 		Assert.assertNotNull(student);
 	}
 }
