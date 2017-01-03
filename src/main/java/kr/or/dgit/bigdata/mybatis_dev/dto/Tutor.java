@@ -6,7 +6,7 @@ public class Tutor {
 	private int tutorId;
 	private String name;
 	private String email;
-	private String phone;
+	private PhoneNumber phone;
 	private Address address;
 	private List<Course> course;
 	public int getTutorId() {
@@ -27,10 +27,10 @@ public class Tutor {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public String getPhone() {
+	public PhoneNumber getPhone() {
 		return phone;
 	}
-	public void setPhone(String phone) {
+	public void setPhone(PhoneNumber phone) {
 		this.phone = phone;
 	}
 	public Address getAddress() {
